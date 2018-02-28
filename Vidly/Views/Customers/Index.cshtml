@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Vidly.Models.Customer>
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Customers</h2>
+@if (!Model.Any())
+{
+    <p>We don't have any customers yet.</p>
+}
+else
+{
+    <head>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <table width="100%" class=“table table-striped table-hover ”>
+        <thead>
+            <tr>
+                <th scope="col">Customer</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var customer in Model)
+            {
+                string rowType = customer.Id % 2 != 0 ? "table-dark" : "table-light";
+            <tr class=@rowType>
+                    <td>
+                       <a href="Customers/Details/@customer.Id" scope="row">@customer.Name</a>
+                    </td>
+            </tr>
+            }
+
+        </tbody>
+
+    </table>
+}

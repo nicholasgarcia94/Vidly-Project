@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Vidly.Models.Movie>
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Movies</h2>
+@if (!Model.Any())
+{
+    <p>No movies to show.</p>
+}
+else
+{
+    <head>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <table	width="100%" class=“table	table-striped table-hover ”>
+        <thead>
+            <tr>
+                <th scope="col">Movie</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var movie in Model)
+            {
+                string rowType = movie.Id % 2 != 0 ? "table-dark" : "table-light";
+               <tr class= @rowType>
+                   <td scope="row">@movie.Name</td>
+               </tr>
+            }
+            
+        </tbody>
+
+    </table>
+
+
+}
