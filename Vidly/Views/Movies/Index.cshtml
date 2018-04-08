@@ -23,15 +23,17 @@ else
         <thead>
             <tr>
                 <th scope="col">Movie</th>
+                <th scope="col">Genre</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var movie in Model)
             {
                 string rowType = movie.Id % 2 != 0 ? "table-dark" : "table-light";
-               <tr class= @rowType>
-                   <td scope="row">@movie.Name</td>
-               </tr>
+            <tr class=@rowType>
+                <td>@Html.ActionLink(movie.Name, "Details", "Movies", new { id = movie.Id }, null)</td>
+                <td scope="row">@movie.Genre.Name</td>
+            </tr>
             }
             
         </tbody>
