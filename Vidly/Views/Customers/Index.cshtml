@@ -31,9 +31,7 @@ else
             {
                 string rowType = customer.Id % 2 != 0 ? "table-dark" : "table-light";
             <tr class=@rowType>
-                <td>
-                   <a href="Customers/Details/@customer.Id" scope="row">@customer.Name</a>
-                </td>
+                <td>@Html.ActionLink(customer.Name, "Edit", "Customers", new { id = customer.Id }, null)</td>
                 <td>@customer.MembershipType.Name</td>
             </tr>
             }
